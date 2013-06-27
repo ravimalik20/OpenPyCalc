@@ -1,12 +1,32 @@
-#!/usr/bin/python
-#Implement previous result variable
-#Save records to file
+#########################################################################################
+#	
+#	Copyright (C) 2011-2013  Ravi Malik
+#	
+#	This program is free software; you can redistribute it and/or
+#	modify it under the terms of the GNU General Public License
+#	as published by the Free Software Foundation; either version 2
+#	of the License, or (at your option) any later version.
+#	
+#	This program is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#	
+#	You should have received a copy of the GNU General Public License
+#	along with this program; if not, write to the Free Software
+#	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+#	You may contact the author by:
+#		E-Mail: ravimalik2364@gmail.com
+#	
+#
+###########################################################################################
+
 from calc import *
 from Tkinter import *
 import tkMessageBox as message
 class interface:
 	def __init__(self,parent):
-		#top=self.top=Toplevel(parent)
 		self.records=[]
 		self.res=StringVar()
 		root=self.root=parent
@@ -51,7 +71,6 @@ class interface:
 			val="Division by Zero not allowed."
 		except ValueError:
 			val="Domain of a Function out of bound"
-		#Label(self.root,text=value).pack()
 		self.res.set(val)
 		r=record(exp,value)
 		self.records.append(r)
@@ -111,16 +130,12 @@ Enter the expression to evaluate . You can give the following operators:
 15. Absolute Value:	abs()
 16. Square Root:	sqrt() 
 After entering the expression click on evaluate to get the result of the expression.''').pack()
-		#b=Button(top,text="Back",command=top.destroy())
-		#b.pack()
 		print "HELP"
 		root.wait_window(top)
 	def about(self):
 		top=Toplevel(root)
 		top.title("About")
 		Label(top,text="Developed by Ravi Malik using Python 2.7 and Tkinter GUI").pack()
-		#b=Button(top,text="Back",command=top.destroy())
-		#b.pack()
 		print "ABOUT"
 		root.wait_window(top)
 class record:
@@ -130,4 +145,3 @@ class record:
 root=Tk()
 d=interface(root)
 root.mainloop()
-#root.wait_window(d.root)
