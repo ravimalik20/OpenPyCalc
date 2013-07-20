@@ -33,7 +33,6 @@ def preeval(a):
 		if t[i] in unary:
 			stack.append(i)
 		i=i+1
-	print "stack",stack
 	while len(stack)!=0:
 		a=stack.pop()
 		b=-1		
@@ -78,14 +77,12 @@ def preeval(a):
 		elif t[a]=="fact":
 			val=factorial(int(val))
 		elif t[a]=="abs":
-			print "Value:",val,t[a]
 			val=fabs(float(val))
 		
 		while b!=a:
 			del(t[a])
 			b=b-1
 		t[a]=str(val)		
-		print "Temporary State",t
 	return t	
 
 def parse(a):
@@ -126,11 +123,9 @@ def convert(infix):
 	stack=[]
 	stack.append("(")
 	infix.append(")")
-	print infix
 	sttop=0
 	n=len(infix)
 	for i in range(0,n):
-		print infix[i]
 		if not infix[i] in bchar:
 			postfix.append(deepcopy(infix[i]))
 		elif infix[i]=="(":
@@ -169,19 +164,16 @@ def convert(infix):
 				sttop=sttop-1
 			del(stack[sttop])
 			sttop=sttop-1
-		print stack,"\t\t",postfix
 	return postfix
 
 def evaluate(postfix):
 	temp=deepcopy(postfix)	
-	print "Postfix is:",temp
 	stack=[]
 	sttop=-1
 	temp.append(")")
 	n=len(temp)
 	i=0
 	while temp[i]!=")":
-		print temp[i]
 		if not temp[i] in bchar:
 			stack.append(deepcopy(temp[i]))
 			sttop=sttop+1
@@ -199,13 +191,10 @@ def evaluate(postfix):
 			elif temp[i]=="/":
 				c=float(b)/float(a)
 			elif temp[i]=="^":
-				print "Power"
 				a=float(a)
 				b=float(b)
 				c=float(pow(b,a))
 			stack.append(deepcopy(c))
 			sttop=sttop+1
-		print stack
 		i=i+1	
-	print sttop
 	return stack[sttop]

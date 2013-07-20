@@ -60,11 +60,8 @@ class interface:
 		val=""
 		try:
 			infix=parse(exp)
-			print "Infix before preeval:",infix
-			print "Infix after preeval:",infix
 			infix=preeval(infix)		
 			postfix=convert(infix)
-			print "Postfix:",postfix
 			value=str(evaluate(postfix))
 			val="Value is : "+value
 		except ZeroDivisionError:
@@ -130,13 +127,11 @@ Enter the expression to evaluate . You can give the following operators:
 15. Absolute Value:	abs()
 16. Square Root:	sqrt() 
 After entering the expression click on evaluate to get the result of the expression.''').pack()
-		print "HELP"
 		root.wait_window(top)
 	def about(self):
 		top=Toplevel(root)
 		top.title("About")
 		Label(top,text="Developed by Ravi Malik using Python 2.7 and Tkinter GUI").pack()
-		print "ABOUT"
 		root.wait_window(top)
 class record:
 	def __init__(self,exp,res):
